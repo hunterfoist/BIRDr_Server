@@ -12,6 +12,9 @@ router.post("/register", function (req, res) {
     User.create({
       username: req.body.user.username,
       password: bcrypt.hashSync(req.body.user.password, 5),
+      first_name: req.body.user.first_name,
+      last_name: req.body.user.last_name
+
     })
       .then(function createSuccess(user) {
         let token = jwt.sign({ id: user.id }, "secret", {

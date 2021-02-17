@@ -3,7 +3,7 @@ var router = express.Router();
 
 let validateSession = require('../middleware/validate-session');
 var sequelize = require('../db');
-var Log = sequelize.import('../models/log');
+var Log = sequelize.import('../models/log-model');
 
 
 router.post('/', validateSession, (req, res) => {
