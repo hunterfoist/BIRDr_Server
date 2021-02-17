@@ -1,4 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
+
     const Log = sequelize.define('log', {
         species: {
             type: DataTypes.STRING,
@@ -34,3 +35,4 @@ module.exports = (sequelize, DataTypes) => {
     })
     return Log;
 };
+

@@ -3,6 +3,7 @@ const Log = require('../db').import('../models/log-model');
 
 let validateSession = require('../middleware/validate-session');
 
+
 router.post('/createlog', validateSession, (req, res) => {
   const createLog = {
     species: req.body.log.species,
