@@ -18,18 +18,17 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         rarity: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         image_id: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.INTEGER
         },
         owner_id: {
             type: DataTypes.INTEGER
         },
         secret: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BOOLEAN,
             allowNull: false
         }
     })
