@@ -52,8 +52,6 @@ router.put('/updatelog/:id', validateSession, function(req, res) {
     time: req.body.log.time,
     date: req.body.log.date,
     rarity: req.body.log.rarity,
-    image_id: req.body.log.image_id,
-    owner_id: req.body.log.owner_id,
     secret: req.body.log.secret
   };
   const query = { where: {id: req.params.id}};
