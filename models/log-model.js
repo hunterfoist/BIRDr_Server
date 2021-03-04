@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         image_id: {
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING,
         },
         owner_id: {
             type: DataTypes.INTEGER
