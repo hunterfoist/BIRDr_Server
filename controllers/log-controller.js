@@ -1,15 +1,15 @@
 const router = require('express').Router();
 const Log = require('../db').import('../models/log-model');
-const Image = require('../db').import('../models/gallery-model');
+// const Image = require('../db').import('../models/gallery-model');
 
 let validateSession = require('../middleware/validate-session');
 
 
 router.post('/createlog', validateSession, (req, res) => {
-  const createimage = {image_url: req.body.log.image_url};
+  // const createimage = {image_url: req.body.log.image_url};
   
-  Image.create(createimage)
-  .then(imagerecord => {
+  // Image.create(createimage)
+  // .then(imagerecord => {
     
     const createLog = {
       species: req.body.log.species,
@@ -17,24 +17,24 @@ router.post('/createlog', validateSession, (req, res) => {
       time: req.body.log.time,
       date: req.body.log.date,
       rarity: req.body.log.rarity,
-      image_id: imagerecord.id,
+      image_id: req.body.log.image_url,
       owner_id: req.user.id,
       secret: req.body.log.secret
   
   } 
   Log.create(createLog)
   .then(log => res.status(200).json(log))
-})
+
   .catch(err => res.status(500).json({error: err}))
   
 });
 
-router.get("/gallery", validateSession, (req, res) => { 
-  const query = {where: {secret: false}}
-  Log.findAll(query)
-  .then(logs => res.status(200).json(logs))
-  .catch(err => res.status(500).json({error: err}))
-});
+// router.get("/gallery", validateSession, (req, res) => { 
+//   const query = {where: {secret: false}}
+//   Log.findAll(query)
+//   .then(logs => res.status(200).json(logs))
+//   .catch(err => res.status(500).json({error: err}))
+// });
 
 router.get("/getlogs", validateSession, (req, res) => {
   let owner_id = req.user.id
@@ -52,6 +52,7 @@ router.put('/updatelog/:id', validateSession, function(req, res) {
     time: req.body.log.time,
     date: req.body.log.date,
     rarity: req.body.log.rarity,
+    image_id: req.body.log.image_url,
     secret: req.body.log.secret
   };
   const query = { where: {id: req.params.id}};
