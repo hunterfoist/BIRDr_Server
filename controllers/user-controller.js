@@ -17,7 +17,7 @@ router.post("/register", function (req, res) {
 
     })
       .then(function createSuccess(user) {
-        let token = jwt.sign({ id: user.id }, "secret", {
+        let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
           expiresIn: 60 * 60 * 24,
         }); 
   
@@ -43,7 +43,7 @@ router.post("/register", function (req, res) {
             matches
           ) {
             if (matches) {
-              let token = jwt.sign({ id: user.id }, "secret", {
+              let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
                 expiresIn: 60 * 60 * 24,
               });
   

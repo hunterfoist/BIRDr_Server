@@ -18,7 +18,7 @@ app.use('/user', user);
 app.use("/log", log);
 
 
-app.listen(3000, function(){
+app.listen(process.env.PORT, function(){
 
-    console.log("App is listening on port 3000");
+    console.log(`App is listening on port ${process.env.PORT}`);
 });
